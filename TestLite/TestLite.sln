@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLite", "TestLite\TestLite.csproj", "{7ECB6A2C-0A6F-4EFE-A259-ADD7D32BD112}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLite.Tests", "TestLite.Tests\TestLite.Tests.csproj", "{6E82F869-16FC-456A-8608-A8F6CFD0AC58}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7ECB6A2C-0A6F-4EFE-A259-ADD7D32BD112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ECB6A2C-0A6F-4EFE-A259-ADD7D32BD112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ECB6A2C-0A6F-4EFE-A259-ADD7D32BD112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ECB6A2C-0A6F-4EFE-A259-ADD7D32BD112}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E82F869-16FC-456A-8608-A8F6CFD0AC58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E82F869-16FC-456A-8608-A8F6CFD0AC58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E82F869-16FC-456A-8608-A8F6CFD0AC58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E82F869-16FC-456A-8608-A8F6CFD0AC58}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5FF12DD-6EA3-4296-AFC7-FF81591259F7}
+	EndGlobalSection
+EndGlobal
