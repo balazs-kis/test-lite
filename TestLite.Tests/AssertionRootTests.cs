@@ -326,5 +326,65 @@ namespace TestLite.Tests
             Assert.IsNotNull(exception);
             Assert.IsInstanceOfType(exception, typeof(AssertFailedException));
         }
+
+        [TestMethod]
+        public void GenericOkResult_ValidationCallbackDoesNotThrowException()
+        {
+            const int one = 1;
+            var result = ActResult.Ok(one);
+            var underTest = new AssertionRoot<int>(result);
+            Exception exception = null;
+
+            try
+            {
+                underTest.Validate(r => Assert.AreEqual(one, r));
+            }
+            catch (Exception ex)
+            {
+                exception = ex;
+            }
+
+            Assert.IsNull(exception);
+        }
+
+        [TestMethod]
+        public void GenericOkResult_ValidationCallbackThrowsException()
+        {
+            var result = ActResult.Ok(1);
+            var underTest = new AssertionRoot<int>(result);
+            Exception exception = null;
+
+            try
+            {
+                underTest.Validate(r => Assert.AreEqual(2, r));
+            }
+            catch (Exception ex)
+            {
+                exception = ex;
+            }
+
+            Assert.IsNotNull(exception);
+            Assert.IsInstanceOfType(exception, typeof(AssertFailedException));
+        }
+
+        [TestMethod]
+        public void GenericErrorResult_ValidateThrowsException()
+        {
+            var result = ActResult.ThrewException<int>(new IOException());
+            var underTest = new AssertionRoot<int>(result);
+            Exception exception = null;
+
+            try
+            {
+                underTest.Validate(r => Assert.AreEqual(1, r));
+            }
+            catch (Exception ex)
+            {
+                exception = ex;
+            }
+
+            Assert.IsNotNull(exception);
+            Assert.IsInstanceOfType(exception, typeof(AssertFailedException));
+        }
     }
 }
