@@ -30,7 +30,7 @@ namespace TestLite.Tests
         public void GenericOkResult_IsSuccessDoesNotThrowException()
         {
             var result = ActResult.Ok(0);
-            var underTest = new AssertionRoot(result);
+            var underTest = new AssertionRoot<int>(result);
             Exception exception = null;
 
             try
@@ -89,7 +89,7 @@ namespace TestLite.Tests
         public void GenericErrorResult_IsSuccessThrowsException()
         {
             var result = ActResult.ThrewException<int>(new Exception());
-            var underTest = new AssertionRoot(result);
+            var underTest = new AssertionRoot<int>(result);
             Exception exception = null;
 
             try
@@ -110,7 +110,7 @@ namespace TestLite.Tests
         {
             const string message = "Should work";
             var result = ActResult.ThrewException<int>(new Exception());
-            var underTest = new AssertionRoot(result);
+            var underTest = new AssertionRoot<int>(result);
             Exception exception = null;
 
             try
@@ -149,7 +149,7 @@ namespace TestLite.Tests
         public void GenericOkResult_ThrewExceptionThrowsException()
         {
             var result = ActResult.Ok(0);
-            var underTest = new AssertionRoot(result);
+            var underTest = new AssertionRoot<int>(result);
             Exception exception = null;
 
             try
@@ -192,7 +192,7 @@ namespace TestLite.Tests
             const string message = "Should not work";
 
             var result = ActResult.Ok(0);
-            var underTest = new AssertionRoot(result);
+            var underTest = new AssertionRoot<int>(result);
             Exception exception = null;
 
             try
@@ -230,7 +230,7 @@ namespace TestLite.Tests
         public void GenericErrorResult_ThrewExceptionDoesNotThrowException()
         {
             var result = ActResult.ThrewException<int>(new Exception());
-            var underTest = new AssertionRoot(result);
+            var underTest = new AssertionRoot<int>(result);
             Exception exception = null;
 
             try
@@ -269,7 +269,7 @@ namespace TestLite.Tests
         public void GenericErrorResultWithWrongExceptionType_ThrewExceptionThrowsException()
         {
             var result = ActResult.ThrewException<int>(new IOException());
-            var underTest = new AssertionRoot(result);
+            var underTest = new AssertionRoot<int>(result);
             Exception exception = null;
 
             try
@@ -311,7 +311,7 @@ namespace TestLite.Tests
         {
             const string message = "Should throw InvalidOperation";
             var result = ActResult.ThrewException<int>(new IOException());
-            var underTest = new AssertionRoot(result);
+            var underTest = new AssertionRoot<int>(result);
             Exception exception = null;
 
             try
