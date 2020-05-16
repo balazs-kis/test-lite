@@ -1,7 +1,7 @@
 language: csharp
 mono: none
 dotnet: 3.1.102
-solution: RedisLite.sln
+solution: TestLite.sln
 
 script:
   # Restore and build
