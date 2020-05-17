@@ -205,5 +205,205 @@ namespace TestLite.Tests
 
             Assert.IsTrue(called);
         }
+
+        [TestMethod]
+        public void ActWithTwoInputs_ActActionWithoutException_ActedInstanceReturned()
+        {
+            var arranged = new Arranged<string, int>("input", 1);
+
+            var result = arranged.Act((input, parameter) => { });
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Acted));
+        }
+
+        [TestMethod]
+        public void ActWithTwoInputs_ActActionWithoutException_ActActionIsCalled()
+        {
+            var arranged = new Arranged<string, int>("input", 1);
+            var called = false;
+
+            arranged.Act((input, parameter) => called = true);
+
+            Assert.IsTrue(called);
+        }
+
+        [TestMethod]
+        public void ActWithTwoInputs_ActActionWithException_ActedInstanceReturned()
+        {
+            var arranged = new Arranged<string, int>("input", 1);
+
+            var result = arranged.Act((input, parameter) => throw new IOException());
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Acted));
+        }
+
+        [TestMethod]
+        public void ActWithTwoInputs_ActActionWithException_ActActionIsCalled()
+        {
+            var arranged = new Arranged<string, int>("input", 1);
+            var called = false;
+
+            arranged.Act((input, parameter) =>
+            {
+                called = true;
+                throw new IOException();
+            });
+
+            Assert.IsTrue(called);
+        }
+
+        [TestMethod]
+        public void ActWithTwoInputsAndReturnType_ActActionWithoutException_ActedInstanceReturned()
+        {
+            var arranged = new Arranged<string, int>("input", 1);
+
+            var result = arranged.Act((input, parameter) => 1);
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Acted<int>));
+        }
+
+        [TestMethod]
+        public void ActWithTwoInputsAndReturnType_ActActionWithoutException_ActActionIsCalled()
+        {
+            var arranged = new Arranged<string, int>("input", 1);
+            var called = false;
+
+            arranged.Act((input, parameter) =>
+            {
+                called = true;
+                return 1;
+            });
+
+            Assert.IsTrue(called);
+        }
+
+        [TestMethod]
+        public void ActWithTwoInputsAndReturnType_ActActionWithException_ActedInstanceReturned()
+        {
+            var arranged = new Arranged<string, int>("input", 1);
+
+            var result = arranged.Act<int>((input, parameter) => throw new IOException());
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Acted<int>));
+        }
+
+        [TestMethod]
+        public void ActWithTwoInputsAndReturnType_ActActionWithException_ActActionIsCalled()
+        {
+            var arranged = new Arranged<string, int>("input", 1);
+            var called = false;
+
+            arranged.Act<int>((input, parameter) =>
+            {
+                called = true;
+                throw new IOException();
+            });
+
+            Assert.IsTrue(called);
+        }
+
+        [TestMethod]
+        public void ActWithThreeInputs_ActActionWithoutException_ActedInstanceReturned()
+        {
+            var arranged = new Arranged<string, int, double>("input", 1, 2.0);
+
+            var result = arranged.Act((input, param1, param2) => { });
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Acted));
+        }
+
+        [TestMethod]
+        public void ActWithThreeInputs_ActActionWithoutException_ActActionIsCalled()
+        {
+            var arranged = new Arranged<string, int, double>("input", 1, 2.0);
+            var called = false;
+
+            arranged.Act((input, param1, param2) => called = true);
+
+            Assert.IsTrue(called);
+        }
+
+        [TestMethod]
+        public void ActWithThreeInputs_ActActionWithException_ActedInstanceReturned()
+        {
+            var arranged = new Arranged<string, int, double>("input", 1, 2.0);
+
+            var result = arranged.Act((input, param1, param2) => throw new IOException());
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Acted));
+        }
+
+        [TestMethod]
+        public void ActWithThreeInputs_ActActionWithException_ActActionIsCalled()
+        {
+            var arranged = new Arranged<string, int, double>("input", 1, 2.0);
+            var called = false;
+
+            arranged.Act((input, param1, param2) =>
+            {
+                called = true;
+                throw new IOException();
+            });
+
+            Assert.IsTrue(called);
+        }
+
+        [TestMethod]
+        public void ActWithThreeInputsAndReturnType_ActActionWithoutException_ActedInstanceReturned()
+        {
+            var arranged = new Arranged<string, int, double>("input", 1, 2.0);
+
+            var result = arranged.Act((input, param1, param2) => 1);
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Acted<int>));
+        }
+
+        [TestMethod]
+        public void ActWithThreeInputsAndReturnType_ActActionWithoutException_ActActionIsCalled()
+        {
+            var arranged = new Arranged<string, int, double>("input", 1, 2.0);
+            var called = false;
+
+            arranged.Act((input, param1, param2) =>
+            {
+                called = true;
+                return 1;
+            });
+
+            Assert.IsTrue(called);
+        }
+
+        [TestMethod]
+        public void ActWithThreeInputsAndReturnType_ActActionWithException_ActedInstanceReturned()
+        {
+            var arranged = new Arranged<string, int, double>("input", 1, 2.0);
+
+            var result = arranged.Act<int>((input, param1, param2) => throw new IOException());
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Acted<int>));
+        }
+
+        [TestMethod]
+        public void ActWithThreeInputsAndReturnType_ActActionWithException_ActActionIsCalled()
+        {
+            var arranged = new Arranged<string, int, double>("input", 1, 2.0);
+            var called = false;
+
+            arranged.Act<int>((input, param1, param2) =>
+            {
+                called = true;
+                throw new IOException();
+            });
+
+            Assert.IsTrue(called);
+        }
     }
 }
