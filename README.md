@@ -43,7 +43,7 @@ MyTestCase() => Test
     .Assert().IsSuccess("This basic operation should succeed");
 ```
 
-A test case checking if the operation threw the expected exception (using [Fluent Assertions](https://fluentassertions.com/):
+A test case checking if the operation threw the expected exception (using [Fluent Assertions](https://fluentassertions.com/)):
 ```csharp
 [TestMethod]
 MyTestCase() => Test
@@ -68,7 +68,7 @@ MyTestCase() => Test
     .Assert().ThrewException<IndexOutOfRangeException>("The array should be smaller than 10");
 ```
 
-A test case checking if the operation returnedw the expected value (using [Fluent Assertions](https://fluentassertions.com/):
+A test case checking if the operation returned the expected value (using [Fluent Assertions](https://fluentassertions.com/)):
 ```csharp
 [TestMethod]
 MyTestCase() => Test
@@ -84,7 +84,7 @@ MyTestCase() => Test
     });
 ```
 
-The same test case with chained assertion (using [Fluent Assertions](https://fluentassertions.com/):
+The same test case with chained assertion (using [Fluent Assertions](https://fluentassertions.com/)):
 ```csharp
 [TestMethod]
 MyTestCase() => Test
