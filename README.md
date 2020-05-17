@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/balazs-kis/test-lite/master/Logo/logo-title.png" width="50%">
+![RedisLite](https://raw.githubusercontent.com/balazs-kis/test-lite/master/Logo/logo-title.png)
 
 Test Lite is a small library for writing well-structured, clear-cut 3A tests.
 
