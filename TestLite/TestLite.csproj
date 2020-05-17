@@ -2,10 +2,30 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>balazs.kis</Authors>
+    <Description>A small .NET Standard library for writing well-structured, clear-cut 3A tests.</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/balazs-kis/test-lite</PackageProjectUrl>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageIconUrl />
+    <RepositoryUrl>https://github.com/balazs-kis/test-lite</RepositoryUrl>
+    <RepositoryType>Github</RepositoryType>
+    <PackageTags>unit-testing unit-test unit-tests fluent-api arrange-act-assert dotnet dotnet-core dotnet-standard dotnet-standard2 
+    </PackageTags>
+    <PackageId>TestLite</PackageId>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="MSTest.TestFramework" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE" Pack="true" Visible="false" PackagePath="" />
+    <None Include="..\Logo\logo.png" Pack="true" Visible="false" PackagePath="" />
   </ItemGroup>
 
 </Project>
