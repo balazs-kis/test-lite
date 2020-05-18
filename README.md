@@ -18,9 +18,9 @@ Test Lite helps to enforce the 3A pattern for unit tests. Each test can be writt
 
 The `Arrange` method expects a function which returns the unit under test, and optionally some additional parameter(s). If additional parameters are present, the return type should be a value tuple, e.g. `return (underTest, parameter);`. If no arrangement is needed, the Arrange method can be called without any parameters.
 
-The `Act` method expects a function which takes the arguments determined by the previous `Arrange` method, and returns a result. This result, again, can be a value tuple if multiple return values are needed. Any exception thrown be the function passed to `Act` will be catched can be validated later.
+The `Act` method expects a function which takes the arguments determined by the previous `Arrange` method, and returns a result. This result, again, can be a value tuple if multiple return values are needed. Any exception thrown be the function passed to `Act` will be catched and can be validated later.
 
-The `Assert` method has two overloads. One of them takes a validator function, which can be used to declare assertions. In this case the input type is an `ActResult` class. The other variant is parameterless and can be used to chain validation methods. A generic `Validate` method can also be chained to run custom validations on the result. In this case the input is not an `ActResult` instanse, but the value passed from the `Act` method.
+The `Assert` method has two overloads. One of them takes a validator function, which can be used to declare assertions. In this case the input type is an `ActResult` class. The other variant is parameterless and can be used to chain validation methods. A generic `Validate` method can also be chained to run custom validations on the result. In this case the input is not an `ActResult` instance, but the value passed from the `Act` method.
 
 
 ## Exapmles
