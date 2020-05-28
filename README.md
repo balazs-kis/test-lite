@@ -23,7 +23,7 @@ The `Act` method expects a function which takes the arguments determined by the 
 The `Assert` method has two overloads. One of them takes a validator function, which can be used to declare assertions. In this case the input type is an `ActResult` class. The other variant is parameterless and can be used to chain validation methods. A generic `Validate` method can also be chained to run custom validations on the result. In this case the input is not an `ActResult` instance, but the value passed from the `Act` method.
 
 
-## Exapmles
+## Examples
 
 A simple test case which only validates if the Act section did not threw any exception (using [Fluent Assertions](https://fluentassertions.com/)):
 ```csharp
