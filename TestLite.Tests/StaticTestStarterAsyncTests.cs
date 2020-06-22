@@ -57,7 +57,7 @@ namespace TestLite.Tests
 
         private static Task DoSomethingAsync()
         {
-            return Task.FromResult(0);
+            return Task.Delay(100);
         }
     }
 }
