@@ -5,12 +5,12 @@ namespace TestLite
     public class ActResult
     {
         /// <summary>
-        /// True, if the the execution ran without exception
+        /// True, if the execution ran without exception
         /// </summary>
         public bool IsSuccess { get; }
 
         /// <summary>
-        /// True, if the exectuion threw an exception
+        /// True, if the execution threw an exception
         /// </summary>
         public bool IsFailure => !IsSuccess;
 

@@ -388,4 +388,112 @@ namespace TestLite
             return ActResult.Ok(result);
         }
     }
+
+    public sealed class Arranged<T, TParam1, TParam2, TParam3>
+    {
+        private readonly T _underTest;
+        private readonly TParam1 _parameter1;
+        private readonly TParam2 _parameter2;
+        private readonly TParam3 _parameter3;
+
+        internal Arranged(T underTest, TParam1 parameter1, TParam2 parameter2, TParam3 parameter3)
+        {
+            _underTest = underTest;
+            _parameter1 = parameter1;
+            _parameter2 = parameter2;
+            _parameter3 = parameter3;
+        }
+
+        /// <summary>
+        /// Define the <b>act</b>section of the test as an action
+        /// </summary>
+        public Acted Act(Action<T, TParam1, TParam2, TParam3> actAction) =>
+            new Acted(CatchException(actAction));
+
+        /// <summary>
+        /// Define the <b>act</b>section of the test as an action
+        /// </summary>
+        public Acted ActAsync(Func<T, TParam1, TParam2, TParam3, Task> actAction) =>
+            new Acted(CatchExceptionAsync(actAction));
+
+        /// <summary>
+        /// Define the <b>act</b>section of the test as a function
+        /// which returns the result of the test
+        /// </summary>
+        public Acted<TResult> Act<TResult>(Func<T, TParam1, TParam2, TParam3, TResult> actFunc) =>
+            new Acted<TResult>(CatchException(actFunc));
+
+        /// <summary>
+        /// Define the <b>act</b>section of the test as a function
+        /// which returns the result of the test
+        /// </summary>
+        public Acted<TResult> ActAsync<TResult>(Func<T, TParam1, TParam2, TParam3, Task<TResult>> actFunc) =>
+            new Acted<TResult>(CatchExceptionAsync(actFunc));
+
+
+        private ActResult CatchException(Action<T, TParam1, TParam2, TParam3> action)
+        {
+            try
+            {
+                action.Invoke(_underTest, _parameter1, _parameter2, _parameter3);
+                return ActResult.Ok();
+            }
+            catch (Exception ex)
+            {
+                return ActResult.ThrewException(ex);
+            }
+        }
+
+        private ActResult CatchExceptionAsync(Func<T, TParam1, TParam2, TParam3, Task> action)
+        {
+            try
+            {
+                action
+                    .Invoke(_underTest, _parameter1, _parameter2, _parameter3)
+                    .GetAwaiter()
+                    .GetResult();
+
+                return ActResult.Ok();
+            }
+            catch (Exception ex)
+            {
+                return ActResult.ThrewException(ex);
+            }
+        }
+
+        private ActResult<TOut> CatchException<TOut>(Func<T, TParam1, TParam2, TParam3, TOut> func)
+        {
+            TOut result;
+
+            try
+            {
+                result = func.Invoke(_underTest, _parameter1, _parameter2, _parameter3);
+            }
+            catch (Exception ex)
+            {
+                return ActResult.ThrewException<TOut>(ex);
+            }
+
+            return ActResult.Ok(result);
+        }
+
+        private ActResult<TOut> CatchExceptionAsync<TOut>(Func<T, TParam1, TParam2, TParam3, Task<TOut>> func)
+        {
+            TOut result;
+
+            try
+            {
+                result = func
+                    .Invoke(_underTest, _parameter1, _parameter2, _parameter3)
+                    .GetAwaiter()
+                    .GetResult();
+            }
+            catch (Exception ex)
+            {
+                return ActResult.ThrewException<TOut>(ex);
+            }
+
+            return ActResult.Ok(result);
+        }
+    }
 }

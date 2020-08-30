@@ -25,7 +25,7 @@ namespace TestLite
         public void Assert(Action<ActResult> validations) =>
             validations.Invoke(_result);
     }
-    
+
     public sealed class Acted<T>
     {
         private readonly ActResult<T> _result;

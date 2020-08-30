@@ -304,7 +304,7 @@ namespace TestLite.Tests
 
             Assert.IsNotNull(exception);
             Assert.IsInstanceOfType(exception, typeof(AssertFailedException));
-        }        
+        }
 
         [TestMethod]
         public void GenericErrorResultWithWrongExceptionType_ThrewExceptionThrowsExceptionWithMessage()

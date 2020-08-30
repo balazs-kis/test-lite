@@ -67,7 +67,7 @@ namespace TestLite
             var (underTest, parameter1, parameter2) = arrangeFunc.Invoke();
             return new Arranged<T, TParameter1, TParameter2>(underTest, parameter1, parameter2);
         }
-        
+
         /// <summary>
         /// Define the <b>arrange</b> section of the test as a function
         /// which returns the unit under test and two additional parameters
@@ -77,6 +77,28 @@ namespace TestLite
         {
             var (underTest, parameter1, parameter2) = arrangeFunc.Invoke().GetAwaiter().GetResult();
             return new Arranged<T, TParameter1, TParameter2>(underTest, parameter1, parameter2);
+        }
+
+        /// <summary>
+        /// Define the <b>arrange</b> section of the test as a function
+        /// which returns the unit under test and two additional parameters
+        /// </summary>
+        public static Arranged<T, TParameter1, TParameter2, TParameter3> Arrange<T, TParameter1, TParameter2, TParameter3>(
+            Func<(T, TParameter1, TParameter2, TParameter3)> arrangeFunc)
+        {
+            var (underTest, parameter1, parameter2, parameter3) = arrangeFunc.Invoke();
+            return new Arranged<T, TParameter1, TParameter2, TParameter3>(underTest, parameter1, parameter2, parameter3);
+        }
+
+        /// <summary>
+        /// Define the <b>arrange</b> section of the test as a function
+        /// which returns the unit under test and two additional parameters
+        /// </summary>
+        public static Arranged<T, TParameter1, TParameter2, TParameter3> ArrangeAsync<T, TParameter1, TParameter2, TParameter3>(
+            Func<Task<(T, TParameter1, TParameter2, TParameter3)>> arrangeFunc)
+        {
+            var (underTest, parameter1, parameter2, parameter3) = arrangeFunc.Invoke().GetAwaiter().GetResult();
+            return new Arranged<T, TParameter1, TParameter2, TParameter3>(underTest, parameter1, parameter2, parameter3);
         }
     }
 }
