@@ -492,6 +492,128 @@ namespace TestLite.Tests
             Assert.IsTrue(called);
         }
 
+        [TestMethod]
+        public void ActAsyncWithFourInputs_ActActionWithoutException_ActedInstanceReturned()
+        {
+            var arranged = new Arranged<string, int, double, decimal>("input", 1, 2.0, 3m);
+
+            var result = arranged.ActAsync(async (input, param1, param2, param3) =>
+            {
+                await DoSomethingAsync();
+            });
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Acted));
+        }
+
+        [TestMethod]
+        public void ActAsyncWithFourInputs_ActActionWithoutException_ActActionIsCalled()
+        {
+            var arranged = new Arranged<string, int, double, decimal>("input", 1, 2.0, 3m);
+            var called = false;
+
+            arranged.ActAsync(async (input, param1, param2, param3) =>
+            {
+                await DoSomethingAsync();
+                return called = true;
+            });
+
+            Assert.IsTrue(called);
+        }
+
+        [TestMethod]
+        public void ActAsyncWithFourInputs_ActActionWithException_ActedInstanceReturned()
+        {
+            var arranged = new Arranged<string, int, double, decimal>("input", 1, 2.0, 3m);
+
+            var result = arranged.ActAsync(async (input, param1, param2, param3) =>
+            {
+                await DoSomethingAsync();
+                throw new IOException();
+            });
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Acted));
+        }
+
+        [TestMethod]
+        public void ActAsyncWithFourInputs_ActActionWithException_ActActionIsCalled()
+        {
+            var arranged = new Arranged<string, int, double, decimal>("input", 1, 2.0, 3m);
+            var called = false;
+
+            arranged.ActAsync(async (input, param1, param2, param3) =>
+            {
+                await DoSomethingAsync();
+                called = true;
+                throw new IOException();
+            });
+
+            Assert.IsTrue(called);
+        }
+
+        [TestMethod]
+        public void ActAsyncWithFourInputsAndReturnType_ActActionWithoutException_ActedInstanceReturned()
+        {
+            var arranged = new Arranged<string, int, double, decimal>("input", 1, 2.0, 3m);
+
+            var result = arranged.ActAsync(async (input, param1, param2, param3) =>
+            {
+                await DoSomethingAsync();
+                return 1;
+            });
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Acted<int>));
+        }
+
+        [TestMethod]
+        public void ActAsyncWithFourInputsAndReturnType_ActActionWithoutException_ActActionIsCalled()
+        {
+            var arranged = new Arranged<string, int, double, decimal>("input", 1, 2.0, 3m);
+            var called = false;
+
+            arranged.ActAsync(async (input, param1, param2, param3) =>
+            {
+                await DoSomethingAsync();
+                called = true;
+                return 1;
+            });
+
+            Assert.IsTrue(called);
+        }
+
+        [TestMethod]
+        public void ActAsyncWithFourInputsAndReturnType_ActActionWithException_ActedInstanceReturned()
+        {
+            var arranged = new Arranged<string, int, double, decimal>("input", 1, 2.0, 3m);
+
+            var result = arranged.ActAsync<int>(async (input, param1, param2, param3) =>
+            {
+                await DoSomethingAsync();
+                throw new IOException();
+            });
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Acted<int>));
+        }
+
+        [TestMethod]
+        public void ActAsyncWithFourInputsAndReturnType_ActActionWithException_ActActionIsCalled()
+        {
+            var arranged = new Arranged<string, int, double, decimal>("input", 1, 2.0, 3m);
+            var called = false;
+
+            arranged.ActAsync<int>(async (input, param1, param2, param3) =>
+            {
+                await DoSomethingAsync();
+                called = true;
+                throw new IOException();
+            });
+
+            Assert.IsTrue(called);
+        }
+
 
         private static Task DoSomethingAsync()
         {
