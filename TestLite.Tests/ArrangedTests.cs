@@ -405,5 +405,105 @@ namespace TestLite.Tests
 
             Assert.IsTrue(called);
         }
+
+        [TestMethod]
+        public void ActWithFourInputs_ActActionWithoutException_ActedInstanceReturned()
+        {
+            var arranged = new Arranged<string, int, double, decimal>("input", 1, 2.0, 3m);
+
+            var result = arranged.Act((input, param1, param2, param3) => { });
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Acted));
+        }
+
+        [TestMethod]
+        public void ActWithFourInputs_ActActionWithoutException_ActActionIsCalled()
+        {
+            var arranged = new Arranged<string, int, double, decimal>("input", 1, 2.0, 3m);
+            var called = false;
+
+            arranged.Act((input, param1, param2, param3) => called = true);
+
+            Assert.IsTrue(called);
+        }
+
+        [TestMethod]
+        public void ActWithFourInputs_ActActionWithException_ActedInstanceReturned()
+        {
+            var arranged = new Arranged<string, int, double, decimal>("input", 1, 2.0, 3m);
+
+            var result = arranged.Act((input, param1, param2, param3) => throw new IOException());
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Acted));
+        }
+
+        [TestMethod]
+        public void ActWithFourInputs_ActActionWithException_ActActionIsCalled()
+        {
+            var arranged = new Arranged<string, int, double, decimal>("input", 1, 2.0, 3m);
+            var called = false;
+
+            arranged.Act((input, param1, param2, param3) =>
+            {
+                called = true;
+                throw new IOException();
+            });
+
+            Assert.IsTrue(called);
+        }
+
+        [TestMethod]
+        public void ActWithFourInputsAndReturnType_ActActionWithoutException_ActedInstanceReturned()
+        {
+            var arranged = new Arranged<string, int, double, decimal>("input", 1, 2.0, 3m);
+
+            var result = arranged.Act((input, param1, param2, param3) => 1);
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Acted<int>));
+        }
+
+        [TestMethod]
+        public void ActWithFourInputsAndReturnType_ActActionWithoutException_ActActionIsCalled()
+        {
+            var arranged = new Arranged<string, int, double, decimal>("input", 1, 2.0, 3m);
+            var called = false;
+
+            arranged.Act((input, param1, param2, param3) =>
+            {
+                called = true;
+                return 1;
+            });
+
+            Assert.IsTrue(called);
+        }
+
+        [TestMethod]
+        public void ActWithFourInputsAndReturnType_ActActionWithException_ActedInstanceReturned()
+        {
+            var arranged = new Arranged<string, int, double, decimal>("input", 1, 2.0, 3m);
+
+            var result = arranged.Act<int>((input, param1, param2, param3) => throw new IOException());
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Acted<int>));
+        }
+
+        [TestMethod]
+        public void ActWithFourInputsAndReturnType_ActActionWithException_ActActionIsCalled()
+        {
+            var arranged = new Arranged<string, int, double, decimal>("input", 1, 2.0, 3m);
+            var called = false;
+
+            arranged.Act<int>((input, param1, param2, param3) =>
+            {
+                called = true;
+                throw new IOException();
+            });
+
+            Assert.IsTrue(called);
+        }
     }
 }
