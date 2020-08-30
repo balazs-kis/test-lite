@@ -10,13 +10,13 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/balazs-kis/test-lite</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
-    <PackageTags>unit-testing unit-test unit-tests fluent-api arrange-act-assert dotnet dotnet-core dotnet-standard dotnet-standard2 
+    <PackageTags>unit-testing unit-test unit-tests fluent-api arrange-act-assert dotnet dotnet-core dotnet-standard dotnet-standard2
     </PackageTags>
     <PackageId>TestLite</PackageId>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
-    <Version>1.1.0</Version>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.0.0</FileVersion>
+    <Version>1.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
