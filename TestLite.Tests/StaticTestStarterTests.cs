@@ -58,5 +58,20 @@ namespace TestLite.Tests
             Assert.IsInstanceOfType(result, typeof(Arranged<int, bool, double>));
             Assert.IsTrue(called);
         }
+
+        [TestMethod]
+        public void ArrangeWithFunc_ReturnsGenericArrangedClassWithThreeParameters()
+        {
+            var called = false;
+            var result = Test.Arrange(() =>
+            {
+                called = true;
+                return (1, true, 0.5, 2m);
+            });
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Arranged<int, bool, double, decimal>));
+            Assert.IsTrue(called);
+        }
     }
 }

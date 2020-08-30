@@ -54,6 +54,22 @@ namespace TestLite.Tests
             Assert.IsTrue(called);
         }
 
+        [TestMethod]
+        public void ArrangeAsyncWithFunc_ReturnsGenericArrangedClassWithThreeParameters()
+        {
+            var called = false;
+            var result = Test.ArrangeAsync(async () =>
+            {
+                await DoSomethingAsync();
+                called = true;
+                return (1, true, 0.5, 2m);
+            });
+
+            Assert.IsNotNull(result);
+            Assert.IsInstanceOfType(result, typeof(Arranged<int, bool, double, decimal>));
+            Assert.IsTrue(called);
+        }
+
 
         private static Task DoSomethingAsync()
         {
