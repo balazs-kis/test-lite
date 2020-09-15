@@ -2,7 +2,7 @@
 
 Test Lite is a small library for writing well-structured, clear-cut 3A tests.
 
-[![Build Status](https://travis-ci.org/balazs-kis/test-lite.svg?branch=master)](https://travis-ci.org/balazs-kis/test-lite)
+[![Build Status](https://travis-ci.com/balazs-kis/test-lite.svg?branch=master)](https://travis-ci.com/balazs-kis/test-lite)
 [![Coverage Status](https://coveralls.io/repos/github/balazs-kis/test-lite/badge.svg?branch=master)](https://coveralls.io/github/balazs-kis/test-lite?branch=master)
 [![Nuget](https://img.shields.io/nuget/v/TestLite)](https://www.nuget.org/packages/TestLite)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blueviolet)](https://opensource.org/licenses/MIT)
