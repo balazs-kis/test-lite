@@ -2,8 +2,8 @@
 
 Test Lite is a small library for writing well-structured, clear-cut 3A tests.
 
-[![Build Status](https://travis-ci.com/balazs-kis/test-lite.svg?branch=master)](https://travis-ci.com/balazs-kis/test-lite)
-[![Coverage Status](https://coveralls.io/repos/github/balazs-kis/test-lite/badge.svg?branch=master)](https://coveralls.io/github/balazs-kis/test-lite?branch=master)
+[![Build Status](https://github.com/balazs-kis/test-lite/workflows/build/badge.svg "Build Status")](https://github.com/balazs-kis/test-lite/actions?query=workflow%3A%22build%22)
+[![Coverage Status](https://codecov.io/gh/balazs-kis/test-lite/branch/master/graph/badge.svg)](https://codecov.io/gh/balazs-kis/test-lite)
 [![Nuget](https://img.shields.io/nuget/v/TestLite)](https://www.nuget.org/packages/TestLite)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blueviolet)](https://opensource.org/licenses/MIT)
 [![pull requests: welcome](https://img.shields.io/badge/pull%20requests-welcome-brightgreen)](https://github.com/balazs-kis/redis-lite/fork)
